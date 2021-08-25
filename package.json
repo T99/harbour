@@ -1,24 +1,31 @@
 {
-	"name": "<name>",
-	"version": "<version>",
-	"description": "<desc>",
+	"name": "tsdocs-to-mkdocs",
+	"version": "0.1.0",
+	"description": "Generate documentation from TypeScript files (with JSDoc comments) in a Markdown format to be used with mkdocs.",
 	"main": "js/main",
 	"types": ".d.ts/main",
 	"scripts": {
-		"build": "gulp rebuild",
-		"test": "gulp rebuild && jest"
+		"build": "gulp",
+		"test": "gulp && jest"
 	},
 	"repository": {
 		"type": "git",
 		"url": "git+https://github.com/<github_org>/<base_name>.git"
 	},
-	"keywords": [],
-	"author": "Trevor Sears <trevorsears.main@gmail.com> (http://trevorsears.io/)",
+	"keywords": [
+		"documentation",
+		"jsdoc",
+		"jsdocs",
+		"documentation-generation",
+		"documentation-generator",
+		"generate-documentation"
+	],
+	"author": "Trevor Sears <trevorsears.main@gmail.com> (https://trevorsears.io/)",
 	"license": "GPL-3.0-or-later",
 	"bugs": {
-		"url": "https://github.com/<github_org>/<base_name>/issues"
+		"url": "https://github.com/T99/tsdocs-to-mkdocs/issues"
 	},
-	"homepage": "https://github.com/<github_org>/<base_name>#readme",
+	"homepage": "https://github.com/T99/tsdocs-to-mkdocs#readme",
 	"devDependencies": {
 		"typescript": "latest",
 		"tslint": "latest",

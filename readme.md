@@ -1,18 +1,28 @@
-# JavaScript Module Template
-This repository serves as an easy-start template for JavaScript/TypeScript NPM packages. 
+# tsdocs-to-mkdocs
+Generate documentation from TypeScript files (with JSDoc comments) in a Markdown format to be used with mkdocs.
 
-Simply clone the repository into a directory:
+### [Find tsdocs-to-mkdocs on NPM.](https://www.npmjs.com/package/tsdocs-to-mkdocs)
 
-```bash
-$ git clone git@github.com:T99/js-module-template.git my-new-project
+## Table of Contents
+
+ - [Installation](#installation)
+ - [Basic Usage](#basic-usage)
+ - [Documentation](#documentation)
+ - [License](#license)
+
+## Installation
+Install from NPM with
+```
+$ npm install --save tsdocs-to-mkdocs
 ```
 
-And then run the init script:
+## Basic Usage
+Basic usage instructions here.
 
-```bash
-$ ./init.py
-```
+## Documentation
+See the [wiki](https://github.com/T99/tsdocs-to-mkdocs/wiki) for full documentation.
 
-The init script will interactively prompt you for package information and then automatically build the package, correct and fill-in package information, and install the specified NPM packages already included in the provided `package.json`.
+## License
+tsdocs-to-mkdocs is made available under the GNU General Public License v3.
 
-And that's it! Your project is ready to go.
+Copyright (C) 2021 Trevor Sears
