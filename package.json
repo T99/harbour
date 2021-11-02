@@ -26,9 +26,11 @@
 		"url": "https://github.com/T99/tsdocs-to-mkdocs/issues"
 	},
 	"homepage": "https://github.com/T99/tsdocs-to-mkdocs#readme",
-	"devDependencies": {
+	"dependencies": {
 		"typescript": "latest",
-		"tslint": "latest",
+		"fast-glob": "^3.2.7"
+	},
+	"devDependencies": {
 		"@types/jest": "latest",
 		"del": "latest",
 		"gulp": "latest",
@@ -36,6 +38,7 @@
 		"gulp-typescript": "latest",
 		"gulp-uglify-es": "latest",
 		"jest": "latest",
-		"ts-jest": "latest"
+		"ts-jest": "latest",
+		"tslint": "latest"
 	}
 }
