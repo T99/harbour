@@ -8,15 +8,17 @@ import fg from "fast-glob";
 
 export class Harbour {
 
-	protected constructor(paths: string | string[]) {
+	public paths: string[];
+
+	protected constructor(paths: string[]) {
 		
-		fg(paths);
+		this.paths = paths;
 		
 	}
 	
-	public static async doc(): Promise<Harbour> {
+	public static async doc(paths: string | string[]): Promise<Harbour> {
 		
-		return new Harbour([]);
+		return new Harbour(await fg(paths));
 		
 	}
 	
