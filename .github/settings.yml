@@ -4,14 +4,14 @@ repository:
   # See https://docs.github.com/en/rest/reference/repos#update-a-repository for all available settings.
 
   # The name of the repository. Changing this will rename the repository
-  name: tsdocs-to-mkdocs
+  name: harbour
 
   # A short description of the repository that will show up on GitHub
   description: >-
     Generate documentation from TypeScript files (with JSDoc comments) in a Markdown format to be used with mkdocs.
 
   # A URL with more information about the repository
-  homepage: https://T99.github.io/tsdocs-to-mkdocs/
+  homepage: https://T99.github.io/harbour/
 
   # A comma-separated list of topics to set on the repository
   topics: >-

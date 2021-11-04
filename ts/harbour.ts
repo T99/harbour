@@ -1,7 +1,7 @@
 /*
  * Created by Trevor Sears <trevor@trevorsears.com> (https://trevorsears.com/).
  * 3:14 PM -- November 2nd, 2021
- * Project: tsdocs-to-mkdocs
+ * Project: harbour
  */
 
 import fg from "fast-glob";

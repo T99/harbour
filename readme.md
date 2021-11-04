@@ -1,7 +1,7 @@
-# tsdocs-to-mkdocs
+# Harbour
 Generate documentation from TypeScript files (with JSDoc comments) in a Markdown format to be used with mkdocs.
 
-### [Find tsdocs-to-mkdocs on NPM.](https://www.npmjs.com/package/tsdocs-to-mkdocs)
+### [Find @t99/harbour on NPM.](https://www.npmjs.com/package/@t99/harbour)
 
 ## Table of Contents
 
@@ -13,16 +13,16 @@ Generate documentation from TypeScript files (with JSDoc comments) in a Markdown
 ## Installation
 Install from NPM with
 ```
-$ npm install --save tsdocs-to-mkdocs
+$ npm install --save @t99/harbour
 ```
 
 ## Basic Usage
 Basic usage instructions here.
 
 ## Documentation
-See the [wiki](https://github.com/T99/tsdocs-to-mkdocs/wiki) for full documentation.
+See the [wiki](https://github.com/T99/harbour/wiki) for full documentation.
 
 ## License
-tsdocs-to-mkdocs is made available under the GNU General Public License v3.
+harbour is made available under the GNU General Public License v3.
 
 Copyright (C) 2021 Trevor Sears
