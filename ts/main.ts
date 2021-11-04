@@ -15,7 +15,7 @@
 import util from "util";
 import * as fs from "fs";
 import ts from "typescript";
-import { reconstructMethodSignature } from "./syntax-reconstruction";
+import { reconstructClassSignature, reconstructMethodSignature } from "./syntax-reconstruction";
 
 export function printNode(node: ts.Node, sourceFile: ts.SourceFile): void {
 
@@ -52,11 +52,13 @@ export async function main(): Promise<void> {
 		
 		if (node.kind === ts.SyntaxKind["ClassDeclaration"]) {
 			
+			console.log(reconstructClassSignature(node as ts.ClassDeclaration, sourceFile));
+			
 			for (let member of (node as ts.ClassDeclaration).members) {
 				
 				if (member.kind === ts.SyntaxKind.MethodDeclaration) {
 					
-					console.log(reconstructMethodSignature(member as ts.MethodDeclaration, sourceFile));
+					console.log("\t" + reconstructMethodSignature(member as ts.MethodDeclaration, sourceFile));
 					
 				}
 				
