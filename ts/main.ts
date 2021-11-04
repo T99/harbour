@@ -16,6 +16,7 @@ import util from "util";
 import * as fs from "fs";
 import ts from "typescript";
 import { reconstructClassSignature, reconstructMethodSignature } from "./syntax-reconstruction";
+import {Harbour} from "./harbour";
 
 export function printNode(node: ts.Node, sourceFile: ts.SourceFile): void {
 
@@ -38,35 +39,43 @@ export function cleanObject(obj: any, sourceFile: ts.SourceFile): void {
 
 }
 
-export async function main(): Promise<void> {
-	
+export async function testAST(): Promise<void> {
+
 	const filename: string = "test.ts";
-	
+
 	const sourceFile: ts.SourceFile = ts.createSourceFile(
 		filename,
 		fs.readFileSync(filename, "utf-8"),
 		ts.ScriptTarget.Latest
 	);
-	
+
 	for (let node of sourceFile.statements) {
-		
+
 		if (node.kind === ts.SyntaxKind["ClassDeclaration"]) {
-			
+
 			console.log(reconstructClassSignature(node as ts.ClassDeclaration, sourceFile));
-			
+
 			for (let member of (node as ts.ClassDeclaration).members) {
-				
+
 				if (member.kind === ts.SyntaxKind.MethodDeclaration) {
-					
+
 					console.log("\t" + reconstructMethodSignature(member as ts.MethodDeclaration, sourceFile));
-					
+
 				}
-				
+
 			}
-			
+
 		}
-		
+
 	}
+
+}
+
+export async function main(): Promise<void> {
+	
+	let harbour: Harbour = await Harbour.doc("**/*.ts");
+
+	console.log(harbour.paths);
 
 }
 

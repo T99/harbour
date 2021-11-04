@@ -5,10 +5,14 @@
  */
 
 import { MemberSymbol } from "./member-symbol";
-import { TopLevelSymbol } from "./top-level-symbol";
-import { SyntaxSymbol } from "./syntax-symbol";
-import { SyntaxSymbolType } from "../util/syntax-symbol-type";
-import { Documentation } from "./documentation";
+import { TopLevelSymbol, TopLevelSymbolDefinition } from "./top-level-symbol";
+import { SyntaxSymbol, SyntaxSymbolDefinition } from "./syntax-symbol";
+
+export type FormalTypeSymbolDefinition = SyntaxSymbolDefinition & TopLevelSymbolDefinition & {
+
+	members: MemberSymbol[]
+
+};
 
 /**
  * A high-level representation of a 'formal type' in TypeScript - i.e. those declared using the 'class' or 'interface'
@@ -19,27 +23,33 @@ import { Documentation } from "./documentation";
  * @since v0.1.0
  */
 export abstract class FormalTypeSymbol extends SyntaxSymbol implements TopLevelSymbol {
-	
-	public isExported: boolean;
 
-	public members: MemberSymbol[];
-	
+	protected definition!: FormalTypeSymbolDefinition;
+
+	protected constructor(definition: FormalTypeSymbolDefinition) {
+		
+		super(definition);
+		
+		this.definition.isExported = definition.isExported;
+		this.definition.members = definition.members;
+		
+	}
+
 	/**
+	 * Returns the symbols that are members of this symbol.
 	 *
-	 * @param {SyntaxSymbolType} symbolType The type of syntax represented by this instance.
-	 * @param {string} name
-	 * @param {boolean} isExported
-	 * @param {Documentation} documentation
-	 * @protected
+	 * @returns {MemberSymbol[]} The symbols that are members of this symbol.
 	 */
-	protected constructor(symbolType: SyntaxSymbolType, name: string, isExported: boolean,
-						  documentation?: Documentation) {
-		
-		super(symbolType, name, documentation);
-		
-		this.isExported = isExported;
-		this.members = [];
-		
+	public getMembers(): MemberSymbol[] {
+
+		return this.definition.members;
+
+	}
+
+	public isExported(): boolean {
+
+		return this.definition.isExported;
+
 	}
 	
 }

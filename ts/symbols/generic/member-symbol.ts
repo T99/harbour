@@ -7,6 +7,7 @@
 import { AccessModifier } from "../util/access-modifier";
 import { SyntaxSymbol } from "./syntax-symbol";
 import { Documentation } from "./documentation";
+import {SyntaxSymbolType} from "../util/syntax-symbol-type";
 
 /**
  * A type of TypeScript symbol that belongs to some parent symbol, such as a method that belongs to a class.
@@ -21,20 +22,22 @@ export abstract class MemberSymbol extends SyntaxSymbol {
 	 * The access modifier associated with this symbol, or undefined if no access modifier was explicitly provided with
 	 * this symbol.
 	 */
-	public accessModifier?: AccessModifier;
+	protected accessModifier?: AccessModifier;
 	
 	/**
 	 * Initializes a new TypeScriptMemberSymbol with the provided name and optional access modifier and documentation.
-	 * 
+	 *
+	 * @param {SyntaxSymbolType} symbolType The type of syntax represented by this instance.
 	 * @param {string} name The name of this symbol.
 	 * @param {AccessModifier} accessModifier The access modifier associated with this symbol, or undefined if no access
 	 * modifier was explicitly provided with this symbol.
 	 * @param {Documentation} documentation The {@link Documentation} associated with this symbol,
 	 * or undefined if no documentation is associated with this symbol.
 	 */
-	protected constructor(name: string, accessModifier?: AccessModifier, documentation?: Documentation) {
+	protected constructor(symbolType: SyntaxSymbolType, name: string, accessModifier?: AccessModifier,
+						  documentation?: Documentation) {
 		
-		super(name, documentation);
+		super(symbolType, name, documentation);
 		
 		this.accessModifier = accessModifier;
 		

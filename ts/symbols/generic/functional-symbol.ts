@@ -6,14 +6,22 @@
 
 import { FunctionalParameter } from "../util/functional-parameter";
 
+export type FunctionalSymbolDefinition = {
+
+	isAsync: boolean,
+
+	parameters: FunctionalParameter[],
+
+	returnType: string
+
+};
+
 export interface FunctionalSymbol {
 
-	isAsync: boolean;
-	
-	parameters: FunctionalParameter[];
-	
-	returnType: string;
-	
-	
+	isAsync(): boolean;
+
+	getParameters(): FunctionalParameter[];
+
+	getReturnType(): string;
 	
 }
