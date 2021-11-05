@@ -15,6 +15,11 @@ import { SyntaxSymbolType } from "../util/syntax-symbol-type";
  * @since v0.1.0
  */
 export type SyntaxSymbolDefinition = {
+	
+	/**
+	 * The full path to the file from which this symbol was parsed.
+	 */
+	sourceFilePath: string,
 
 	/**
 	 * The type of syntax represented by this instance - i.e. a 'class', or a 'function'.
@@ -45,7 +50,7 @@ export type SyntaxSymbolDefinition = {
  * @since v0.1.0
  */
 export abstract class SyntaxSymbol {
-
+	
 	/**
 	 * The {@link SyntaxSymbolDefinition} object for this SyntaxSymbol.
 	 */
@@ -59,6 +64,20 @@ export abstract class SyntaxSymbol {
 	protected constructor(definition: SyntaxSymbolDefinition) {
 
 		this.definition = definition;
+		
+	}
+	
+	// DOC-ME [11/5/2021 @ 4:39 PM] Documentation is required!
+	public getSourceFilePath(): string {
+		
+		return this.definition.sourceFilePath;
+		
+	}
+	
+	// DOC-ME [11/5/2021 @ 9:06 AM] Documentation is required!
+	public getSymbolType(): SyntaxSymbolType {
+		
+		return this.definition.symbolType;
 		
 	}
 
