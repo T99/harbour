@@ -45,6 +45,17 @@ export abstract class FormalTypeSymbol extends SyntaxSymbol implements TopLevelS
 		return this.definition.members;
 
 	}
+	
+	/**
+	 * Appends a new member ({@link MemberSymbol}) to this instance.
+	 * 
+	 * @param {MemberSymbol} member The new member ({@link MemberSymbol}) to append to this instance.
+	 */
+	public addMember(member: MemberSymbol): void {
+		
+		this.definition.members.push(member);
+		
+	}
 
 	public isExported(): boolean {
 
