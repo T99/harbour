@@ -4,14 +4,18 @@
  * Project: harbour
  */
 
-import { FormalTypeSymbol } from "../generic/formal-type-symbol";
-import { Documentation } from "../generic/documentation";
+import { FormalTypeSymbol, FormalTypeSymbolDefinition } from "../generic/formal-type-symbol";
+
+export type AbstractClassSymbolDefinition = Omit<FormalTypeSymbolDefinition, "symbolType">;
 
 export class AbstractClassSymbol extends FormalTypeSymbol {
 
-	public constructor(name: string, isExported: boolean, documentation?: Documentation) {
+	public constructor(definition: AbstractClassSymbolDefinition) {
 		
-		super("abstract class", name, isExported, documentation);
+		super({
+			symbolType: "abstract class",
+			...definition
+		});
 		
 	}
 	

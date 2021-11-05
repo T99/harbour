@@ -4,8 +4,19 @@
  * Project: harbour
  */
 
-export class InterfaceSymbol {
+import { FormalTypeSymbol, FormalTypeSymbolDefinition } from "../generic/formal-type-symbol";
 
+export type InterfaceSymbolDefinition = Omit<FormalTypeSymbolDefinition, "symbolType">;
+
+export class InterfaceSymbol extends FormalTypeSymbol {
 	
+	public constructor(definition: InterfaceSymbolDefinition) {
+		
+		super({
+			symbolType: "interface",
+			...definition
+		});
+		
+	}
 	
 }

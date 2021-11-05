@@ -5,9 +5,17 @@
  */
 
 import { AccessModifier } from "../util/access-modifier";
-import { SyntaxSymbol } from "./syntax-symbol";
-import { Documentation } from "./documentation";
-import {SyntaxSymbolType} from "../util/syntax-symbol-type";
+import { SyntaxSymbol, SyntaxSymbolDefinition } from "./syntax-symbol";
+
+export type MemberSymbolDefinition = SyntaxSymbolDefinition & {
+	
+	/**
+	 * The access modifier associated with this symbol, or undefined if no access modifier was explicitly provided with
+	 * this symbol.
+	 */
+	accessModifier?: AccessModifier
+	
+};
 
 /**
  * A type of TypeScript symbol that belongs to some parent symbol, such as a method that belongs to a class.
@@ -18,28 +26,13 @@ import {SyntaxSymbolType} from "../util/syntax-symbol-type";
  */
 export abstract class MemberSymbol extends SyntaxSymbol {
 	
-	/**
-	 * The access modifier associated with this symbol, or undefined if no access modifier was explicitly provided with
-	 * this symbol.
-	 */
-	protected accessModifier?: AccessModifier;
+	protected definition!: MemberSymbolDefinition;
 	
-	/**
-	 * Initializes a new TypeScriptMemberSymbol with the provided name and optional access modifier and documentation.
-	 *
-	 * @param {SyntaxSymbolType} symbolType The type of syntax represented by this instance.
-	 * @param {string} name The name of this symbol.
-	 * @param {AccessModifier} accessModifier The access modifier associated with this symbol, or undefined if no access
-	 * modifier was explicitly provided with this symbol.
-	 * @param {Documentation} documentation The {@link Documentation} associated with this symbol,
-	 * or undefined if no documentation is associated with this symbol.
-	 */
-	protected constructor(symbolType: SyntaxSymbolType, name: string, accessModifier?: AccessModifier,
-						  documentation?: Documentation) {
+	protected constructor(definition: MemberSymbolDefinition) {
 		
-		super(symbolType, name, documentation);
+		super(definition);
 		
-		this.accessModifier = accessModifier;
+		this.definition.accessModifier = definition.accessModifier;
 		
 	}
 	
@@ -57,8 +50,8 @@ export abstract class MemberSymbol extends SyntaxSymbol {
 	public getAccessModifier(implicitPublic: false): AccessModifier | undefined;
 	public getAccessModifier(implicitPublic: boolean = true): AccessModifier | undefined {
 		
-		if (implicitPublic) return this.accessModifier ?? "public";
-		else return this.accessModifier;
+		if (implicitPublic) return this.definition.accessModifier ?? "public";
+		else return this.definition.accessModifier;
 		
 	}
 	
@@ -70,7 +63,7 @@ export abstract class MemberSymbol extends SyntaxSymbol {
 	 */
 	public setAccessModifier(accessModifier: AccessModifier | undefined): void {
 		
-		this.accessModifier = accessModifier;
+		this.definition.accessModifier = accessModifier;
 		
 	}
 	
@@ -94,7 +87,7 @@ export abstract class MemberSymbol extends SyntaxSymbol {
 	 */
 	public isProtected(): boolean {
 		
-		return this.accessModifier === "protected";
+		return this.definition.accessModifier === "protected";
 		
 	}
 	
@@ -105,7 +98,7 @@ export abstract class MemberSymbol extends SyntaxSymbol {
 	 */
 	public isPrivate(): boolean {
 		
-		return this.accessModifier === "private";
+		return this.definition.accessModifier === "private";
 		
 	}
 	
@@ -131,7 +124,7 @@ export abstract class MemberSymbol extends SyntaxSymbol {
 	 */
 	public isProtectedAccessible(): boolean {
 		
-		return this.accessModifier !== "private";
+		return this.definition.accessModifier !== "private";
 		
 	}
 	
