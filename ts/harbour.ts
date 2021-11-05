@@ -5,20 +5,37 @@
  */
 
 import fg from "fast-glob";
+import { SyntaxSymbol } from "./symbols/generic/syntax-symbol";
 
 export class Harbour {
+	
+	protected data: Map<string, Map<string, SyntaxSymbol>>;
 
-	public paths: string[];
-
-	protected constructor(paths: string[]) {
+	protected constructor(data: Map<string, Map<string, SyntaxSymbol>>) {
 		
-		this.paths = paths;
+		this.data = data;
 		
 	}
 	
 	public static async doc(paths: string | string[]): Promise<Harbour> {
 		
-		return new Harbour(await fg(paths));
+		let filePaths: string[] = await fg(paths);
+		
+		filePaths;
+		
+		return new Harbour(new Map());
+		
+	}
+	
+	public getAllSymbols(): SyntaxSymbol[] {
+		
+		return undefined as any;
+		
+	}
+	
+	public findSymbolsByName(name: string): SyntaxSymbol[] {
+		
+		return [];
 		
 	}
 	
